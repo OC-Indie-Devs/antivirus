@@ -11,24 +11,28 @@ public class EnemyAI : MonoBehaviour {
     private bool hasPath = false;
 
 	Transform currentTarget;
-	TileSpawner ts;
+	TileManager tileMgr;
 	NavMeshAgent agent;
 
 	bool damagingTile = false;
 	float travelTime;
 	float travelTimeLimit = 20f;
 
+	Animator anim;
+
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
-		ts = GameObject.FindWithTag("Tiles").GetComponent<TileSpawner>();
+		tileMgr = GameObject.FindWithTag("Tiles").GetComponent<TileManager>();
+		anim = GetComponentInChildren<Animator>();
+		anim.SetBool("Crawl", true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if ( currentTarget == null ) 
 		{
-			currentTarget = ts.GetRandomTile().transform;
+			currentTarget = tileMgr.GetRandomTile().transform;
 			agent.SetDestination(currentTarget.position);
 			travelTime = 0f;
 		} else {
@@ -39,9 +43,9 @@ public class EnemyAI : MonoBehaviour {
 				{
 					//Debug.Log("Damaging a tile");
 					damagingTile = true;
+					anim.SetBool("AttackTile", true);
 					Invoke("ClearTarget", 3.0f);
-				} else {
-					ts.DamageTile(currentTarget.gameObject, damageRate * Time.deltaTime);
+					tileMgr.DamageTile(currentTarget.gameObject);
 				}
 			}
 		}
@@ -52,6 +56,7 @@ public class EnemyAI : MonoBehaviour {
 		currentTarget = null;
 		damagingTile = false;
 		hasPath = false;
+		anim.SetBool("AttackTile", false);
 	}
 
     bool AtEndOfPath()

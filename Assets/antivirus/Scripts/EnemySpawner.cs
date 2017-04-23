@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	public Text enemiesDestroyedText;
 	public Text componentSpawnText;
-	public Text levelCompleteText;
+	public Text levelPassedText;
 
 	public GameObject[] firewalls;
 	int fwIndex = 0;
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour {
 		{
 			firewalls[i].SetActive(false);
 		}
-		levelCompleteText.enabled = false;
+		levelPassedText.enabled = false;
 	}
 
 	public void RemoveEnemy(GameObject enemy)
@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour {
 		if (enemyList.Count == 0)
 		{
 			// level complete
-			levelCompleteText.enabled = true;
+			levelPassedText.enabled = true;
 		}
 		enemiesDestroyedText.text = "enemiesDestroyed: " + enemiesDestroyed;
 	}
@@ -81,11 +81,14 @@ public class EnemySpawner : MonoBehaviour {
 		enemyList.Add(thisEnemy);
 	}
 
+	// spawn the component needed to repair the circuit and set the firewall that will go up
+	// when component is properly placed in the socket.
 	void SpawnComponent(Vector3 position)
 	{
 		Debug.Log("Spawning component");
 		GameObject thisComponent = Instantiate(componentPrefab, position, Quaternion.identity);
 		CircuitComponent cc = thisComponent.GetComponent<CircuitComponent>();
+		cc.highlightOn();
 		cc.firewall = firewalls[fwIndex];
 		cc.enemySpawner = this;
 		componentExists = true;

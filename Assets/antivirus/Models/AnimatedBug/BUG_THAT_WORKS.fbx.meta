@@ -1,0 +1,536 @@
+fileFormatVersion: 2
+guid: 865e802de29814fb591f4ea29d01a2b0
+timeCreated: 1492920405
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BODY
+    100002: BUG_
+    100004: //RootNode
+    100006: BUTT
+    100008: L_FANG
+    100010: L_FANG_tip
+    100012: L_front_leg_01
+    100014: L_front_leg_02
+    100016: L_front_leg_base2
+    100018: L_front_leg_tip
+    100020: L_hind_leg_01
+    100022: L_hind_leg_02
+    100024: L_hind_leg_base1
+    100026: L_hind_leg_tip
+    100028: L_mid_leg_01
+    100030: L_mid_leg_02
+    100032: L_mid_leg_base
+    100034: L_mid_leg_tip
+    100036: R_FANG
+    100038: R_FANG_tip
+    100040: R_front_leg_01
+    100042: R_front_leg_02
+    100044: R_front_leg_base2
+    100046: R_front_leg_tip
+    100048: R_hind_leg_01
+    100050: R_hind_leg_02
+    100052: R_hind_leg_base1
+    100054: R_hind_leg_tip
+    100056: R_mid_leg_01
+    100058: R_mid_leg_02
+    100060: R_mid_leg_base
+    100062: R_mid_leg_tip
+    100064: ROOT
+    100066: THORAX
+    400000: BODY
+    400002: BUG_
+    400004: //RootNode
+    400006: BUTT
+    400008: L_FANG
+    400010: L_FANG_tip
+    400012: L_front_leg_01
+    400014: L_front_leg_02
+    400016: L_front_leg_base2
+    400018: L_front_leg_tip
+    400020: L_hind_leg_01
+    400022: L_hind_leg_02
+    400024: L_hind_leg_base1
+    400026: L_hind_leg_tip
+    400028: L_mid_leg_01
+    400030: L_mid_leg_02
+    400032: L_mid_leg_base
+    400034: L_mid_leg_tip
+    400036: R_FANG
+    400038: R_FANG_tip
+    400040: R_front_leg_01
+    400042: R_front_leg_02
+    400044: R_front_leg_base2
+    400046: R_front_leg_tip
+    400048: R_hind_leg_01
+    400050: R_hind_leg_02
+    400052: R_hind_leg_base1
+    400054: R_hind_leg_tip
+    400056: R_mid_leg_01
+    400058: R_mid_leg_02
+    400060: R_mid_leg_base
+    400062: R_mid_leg_tip
+    400064: ROOT
+    400066: THORAX
+    4300000: BUG_
+    7400000: Crawl
+    7400002: Idle
+    7400004: AttackComponent
+    7400006: AttackTile
+    9500000: //RootNode
+    13700000: BUG_
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Crawl
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 117
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BUG_
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/BODY
+        weight: 1
+      - path: ROOT/BODY/L_FANG
+        weight: 1
+      - path: ROOT/BODY/L_FANG/L_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/R_FANG
+        weight: 1
+      - path: ROOT/BODY/R_FANG/R_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/THORAX
+        weight: 1
+      - path: ROOT/BODY/THORAX/BUTT
+        weight: 1
+      - path: ROOT/L_front_leg_base2
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02/L_front_leg_tip
+        weight: 1
+      - path: ROOT/L_hind_leg_base1
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02/L_hind_leg_tip
+        weight: 1
+      - path: ROOT/L_mid_leg_base
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02/L_mid_leg_tip
+        weight: 1
+      - path: ROOT/R_front_leg_base2
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02/R_front_leg_tip
+        weight: 1
+      - path: ROOT/R_hind_leg_base1
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02/R_hind_leg_tip
+        weight: 1
+      - path: ROOT/R_mid_leg_base
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02/R_mid_leg_tip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BUG_
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/BODY
+        weight: 1
+      - path: ROOT/BODY/L_FANG
+        weight: 1
+      - path: ROOT/BODY/L_FANG/L_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/R_FANG
+        weight: 1
+      - path: ROOT/BODY/R_FANG/R_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/THORAX
+        weight: 1
+      - path: ROOT/BODY/THORAX/BUTT
+        weight: 1
+      - path: ROOT/L_front_leg_base2
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02/L_front_leg_tip
+        weight: 1
+      - path: ROOT/L_hind_leg_base1
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02/L_hind_leg_tip
+        weight: 1
+      - path: ROOT/L_mid_leg_base
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02/L_mid_leg_tip
+        weight: 1
+      - path: ROOT/R_front_leg_base2
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02/R_front_leg_tip
+        weight: 1
+      - path: ROOT/R_hind_leg_base1
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02/R_hind_leg_tip
+        weight: 1
+      - path: ROOT/R_mid_leg_base
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02/R_mid_leg_tip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AttackComponent
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 212
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BUG_
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/BODY
+        weight: 1
+      - path: ROOT/BODY/L_FANG
+        weight: 1
+      - path: ROOT/BODY/L_FANG/L_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/R_FANG
+        weight: 1
+      - path: ROOT/BODY/R_FANG/R_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/THORAX
+        weight: 1
+      - path: ROOT/BODY/THORAX/BUTT
+        weight: 1
+      - path: ROOT/L_front_leg_base2
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02/L_front_leg_tip
+        weight: 1
+      - path: ROOT/L_hind_leg_base1
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02/L_hind_leg_tip
+        weight: 1
+      - path: ROOT/L_mid_leg_base
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02/L_mid_leg_tip
+        weight: 1
+      - path: ROOT/R_front_leg_base2
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02/R_front_leg_tip
+        weight: 1
+      - path: ROOT/R_hind_leg_base1
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02/R_hind_leg_tip
+        weight: 1
+      - path: ROOT/R_mid_leg_base
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02/R_mid_leg_tip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AttackTile
+      takeName: Take 001
+      firstFrame: 300
+      lastFrame: 328
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BUG_
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/BODY
+        weight: 1
+      - path: ROOT/BODY/L_FANG
+        weight: 1
+      - path: ROOT/BODY/L_FANG/L_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/R_FANG
+        weight: 1
+      - path: ROOT/BODY/R_FANG/R_FANG_tip
+        weight: 1
+      - path: ROOT/BODY/THORAX
+        weight: 1
+      - path: ROOT/BODY/THORAX/BUTT
+        weight: 1
+      - path: ROOT/L_front_leg_base2
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02
+        weight: 1
+      - path: ROOT/L_front_leg_base2/L_front_leg_01/L_front_leg_02/L_front_leg_tip
+        weight: 1
+      - path: ROOT/L_hind_leg_base1
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02
+        weight: 1
+      - path: ROOT/L_hind_leg_base1/L_hind_leg_01/L_hind_leg_02/L_hind_leg_tip
+        weight: 1
+      - path: ROOT/L_mid_leg_base
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02
+        weight: 1
+      - path: ROOT/L_mid_leg_base/L_mid_leg_01/L_mid_leg_02/L_mid_leg_tip
+        weight: 1
+      - path: ROOT/R_front_leg_base2
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02
+        weight: 1
+      - path: ROOT/R_front_leg_base2/R_front_leg_01/R_front_leg_02/R_front_leg_tip
+        weight: 1
+      - path: ROOT/R_hind_leg_base1
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02
+        weight: 1
+      - path: ROOT/R_hind_leg_base1/R_hind_leg_01/R_hind_leg_02/R_hind_leg_tip
+        weight: 1
+      - path: ROOT/R_mid_leg_base
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02
+        weight: 1
+      - path: ROOT/R_mid_leg_base/R_mid_leg_01/R_mid_leg_02/R_mid_leg_tip
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

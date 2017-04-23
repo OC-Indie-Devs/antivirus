@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour {
 			enemySpawner.RemoveEnemy(other);
 		} else if ( other.CompareTag("Component"))
 		{
-			if (!hasComponent && !other.GetComponent<CircuitComponent>().isInSocket)
+			CircuitComponent cc = other.GetComponent<CircuitComponent>();
+			if (!hasComponent && !cc.isInSocket)
 			{
 				Debug.Log("Picking up component");
 				collision.collider.enabled = false;
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 		CircuitComponent cc = hasComponent.GetComponent<CircuitComponent>();
 		cc.isInSocket = true;
 		cc.enableCircuit();
+		cc.highlightOff();
 		hasComponent.GetComponent<Collider>().enabled = true;
 		hasComponent = null;
 		socket.SetActive(false);
