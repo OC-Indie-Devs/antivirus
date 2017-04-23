@@ -13,7 +13,8 @@ public class EnemySpawner : MonoBehaviour {
 
 	public Text enemiesDestroyedText;
 	public Text componentSpawnText;
-	public Text levelPassedText;
+	public GameObject levelPassedPanel;
+	public GameObject passedParticles;
 
 	public GameObject[] firewalls;
 	int fwIndex = 0;
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour {
 		{
 			firewalls[i].SetActive(false);
 		}
-		levelPassedText.enabled = false;
+		levelPassedPanel.SetActive( false );
 	}
 
 	public void RemoveEnemy(GameObject enemy)
@@ -69,7 +70,10 @@ public class EnemySpawner : MonoBehaviour {
 		if (enemyList.Count == 0)
 		{
 			// level complete
-			levelPassedText.enabled = true;
+			levelPassedPanel.SetActive(true);
+			PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+			pc.disabled = true;
+			passedParticles.SetActive( true );
 		}
 		enemiesDestroyedText.text = "enemiesDestroyed: " + enemiesDestroyed;
 	}

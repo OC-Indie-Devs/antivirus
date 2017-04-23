@@ -8,6 +8,9 @@ public class EnemyAI : MonoBehaviour {
 	public float pathEndThreshold = 0.1f;
 	public float damageRate = 1f;
 
+	public GameObject[] particleSystems;
+	public GameObject[] lights;
+
     private bool hasPath = false;
 
 	Transform currentTarget;
@@ -44,10 +47,51 @@ public class EnemyAI : MonoBehaviour {
 					//Debug.Log("Damaging a tile");
 					damagingTile = true;
 					anim.SetBool("AttackTile", true);
+					StartCoroutine(damageEffects());
 					Invoke("ClearTarget", 3.0f);
 					tileMgr.DamageTile(currentTarget.gameObject);
 				}
 			}
+		}
+	}
+
+	IEnumerator damageEffects()
+	{
+		ParticleSystem[] ps = new ParticleSystem[particleSystems.Length];
+		for (int i = 0; i < particleSystems.Length; i++)
+		{
+			ps[i] = particleSystems[i].GetComponent<ParticleSystem>();
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < particleSystems.Length; j++)
+			{
+				ps[j].Play();
+				blinkLights();
+			}
+			yield return new WaitForSeconds(0.5f);
+		}
+	}
+
+	void blinkLights()
+	{
+		lightsOn();
+		Invoke("lightsOff", 0.1f);
+	}
+
+	void lightsOn()
+	{
+		for (int i = 0; i < lights.Length; i++)
+		{
+			lights[i].SetActive(true);
+		}
+	}
+
+	void lightsOff()
+	{
+		for (int i = 0; i < lights.Length; i++)
+		{
+			lights[i].SetActive(false);
 		}
 	}
 

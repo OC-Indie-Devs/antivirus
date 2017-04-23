@@ -33,6 +33,13 @@ public class SceneMgr : MonoBehaviour {
 		SceneManager.LoadScene( lastIndex );
 	}
 
+
+	public void ReloadScene()
+	{
+		int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene( sceneIndex );
+	}
+
 	public void LoadScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);

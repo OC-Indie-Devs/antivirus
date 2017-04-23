@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class TileManager : MonoBehaviour {
 	public float failThreshold = 0.5f;
 	public Slider healthSlider;
-	public Text failedText;
+	public GameObject levelFailedPanel;
+
+	public GameObject failParticles;
 
 	List<GameObject> healthyTiles;
 	List<GameObject> damagedTiles;
 
 	// Use this for initialization
 	void Start () {
-		failedText.enabled = false;
+		levelFailedPanel.SetActive( false );
 		healthyTiles = new List<GameObject>();
 		damagedTiles = new List<GameObject>();
 		
@@ -41,6 +43,18 @@ public class TileManager : MonoBehaviour {
 		return damagedTiles[Random.Range(0, damagedTiles.Count)];
 	}
 
+	public GameObject GetAnyRandomTile()
+	{
+		int numTiles = healthyTiles.Count + damagedTiles.Count;
+		int randTile = Random.Range(0, numTiles);
+		if ( randTile >= healthyTiles.Count )
+		{
+			return damagedTiles[randTile - healthyTiles.Count];
+		} else {
+			return healthyTiles[randTile];
+		}
+	}
+
 	public void DamageTile(GameObject tile)
 	{
 		int tileIndex = healthyTiles.IndexOf(tile);
@@ -59,9 +73,14 @@ public class TileManager : MonoBehaviour {
 		healthSlider.value = sliderValue;
 		if ( sliderValue < failThreshold )
 		{
-			failedText.enabled = true;
+			levelFailedPanel.SetActive( true );
 			PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 			pc.disabled = true;
+			GameObject[] ps = new GameObject[10];
+			for (int i = 0; i < 10; i++)
+			{
+				ps[i] = Instantiate(failParticles, GetAnyRandomTile().transform.position, Quaternion.identity);
+			}
 		}
 		//Debug.Log("sliderValue=" + sliderValue);
 	}
