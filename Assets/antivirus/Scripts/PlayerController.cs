@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	public bool disabled = false;
 	public float speed = 1.0f;
 	public float rotationSpeed = 1.0f;
 
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if ( disabled )
+			return;
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 		translation *= Time.deltaTime;
@@ -26,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
+		if ( disabled )
+			return;
 		GameObject other = collision.collider.gameObject;
 		//Debug.Log("Player collision with " + other.tag);
 		if ( other.CompareTag("Enemy") )
@@ -48,6 +53,8 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+		if ( disabled )
+			return;
 		Debug.Log("Player trigger from " + other.tag);
 		if ( other.CompareTag("ComponentSocket") && hasComponent )
 		{

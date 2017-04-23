@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour {
 
 	public float pathEndThreshold = 0.1f;
+	public float damageRate = 1f;
 
     private bool hasPath = false;
 
@@ -14,7 +15,8 @@ public class EnemyAI : MonoBehaviour {
 	NavMeshAgent agent;
 
 	bool damagingTile = false;
-
+	float travelTime;
+	float travelTimeLimit = 20f;
 
 	// Use this for initialization
 	void Start () {
@@ -28,12 +30,19 @@ public class EnemyAI : MonoBehaviour {
 		{
 			currentTarget = ts.GetRandomTile().transform;
 			agent.SetDestination(currentTarget.position);
+			travelTime = 0f;
 		} else {
-			if (AtEndOfPath() && !damagingTile)
+			travelTime += Time.deltaTime;
+			if ( AtEndOfPath() || travelTime > travelTimeLimit )
 			{
-				damagingTile = true;
-				//Debug.Log("Damaging a tile");
-				Invoke("ClearTarget", 3.0f);
+				if ( !damagingTile )
+				{
+					//Debug.Log("Damaging a tile");
+					damagingTile = true;
+					Invoke("ClearTarget", 3.0f);
+				} else {
+					ts.DamageTile(currentTarget.gameObject, damageRate * Time.deltaTime);
+				}
 			}
 		}
 	}

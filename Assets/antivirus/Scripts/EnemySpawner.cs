@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour {
 		int numEnemies = enemies.Length;
 		foreach( Transform t in spawnPoints.GetComponentsInChildren<Transform>() )
 		{
-			GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies-1)], t.position, Quaternion.identity, parent);
+			GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], t.position, Quaternion.identity, parent);
 			enemyList.Add(thisEnemy);
 		}
 		nextComponent = nextComponentSpawn();
@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour {
 	public void SpawnEnemy()
 	{
 		int numEnemies = enemies.Length;
-		GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies-1)], transform.position, Quaternion.identity, parent);
+		GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], transform.position, Quaternion.identity, parent);
 		enemyList.Add(thisEnemy);
 	}
 
