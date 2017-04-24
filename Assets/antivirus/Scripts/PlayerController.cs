@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 		if ( disabled )
 			return;
 		GameObject other = collision.collider.gameObject;
-		//Debug.Log("Player collision with " + other.tag);
+		//Debug.Log("Player collision with " + other.name + " (" + other.tag + ")" );
 		if ( other.CompareTag("Enemy") )
 		{
 			//Debug.Log("Destroying enemy");

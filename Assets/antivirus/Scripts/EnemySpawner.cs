@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	public Transform spawnPoints;
 	public GameObject[] enemies;
+	public ParticleSystem spawnParticles;
+	public GameObject destroyParticles;
 	public Transform parent;
     
 	[Space]
@@ -33,11 +35,19 @@ public class EnemySpawner : MonoBehaviour {
 	void Start () {
 		enemyList = new List<GameObject>();
 		int numEnemies = enemies.Length;
+
+		int spawnIndex = 0;
 		foreach( Transform t in spawnPoints.GetComponentsInChildren<Transform>() )
 		{
-			GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], t.position, Quaternion.identity, parent);
-			enemyList.Add(thisEnemy);
+			if ( spawnIndex > 0 )
+			{
+				//Debug.Log("Spawning enemy at " + t.position );
+				GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], t.position, Quaternion.identity, parent);
+				enemyList.Add(thisEnemy);
+			}
+			spawnIndex++;
 		}
+
 		nextComponent = nextComponentSpawn();
 		for (int i = 0; i < firewalls.Length; i++)
 		{
@@ -57,6 +67,7 @@ public class EnemySpawner : MonoBehaviour {
 	public void RemoveEnemy(GameObject enemy)
 	{
 		enemyList.Remove(enemy);
+		StartCoroutine( spawnDestroy( enemy.transform.position ) );
 
 		if (!componentExists)
 		{
@@ -85,12 +96,29 @@ public class EnemySpawner : MonoBehaviour {
 		//enemiesDestroyedText.text = "enemiesDestroyed: " + enemiesDestroyed;
 	}
 
+
+	IEnumerator spawnDestroy(Vector3 position)
+	{
+		GameObject ps = Instantiate( destroyParticles, position, Quaternion.identity );
+		yield return new WaitForSeconds( 1.0f );
+		Destroy( ps );
+	}
+
 	public void SpawnEnemy()
 	{
+		StartCoroutine( spawnSwirl() );
 		int numEnemies = enemies.Length;
 		GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], transform.position, Quaternion.identity, parent);
 		enemyList.Add(thisEnemy);
 	}
+
+	IEnumerator spawnSwirl()
+	{
+		spawnParticles.Play();
+		yield return new WaitForSeconds( 1.0f );
+		spawnParticles.Stop();
+	}
+
 
 	// spawn the component needed to repair the circuit and set the firewall that will go up
 	// when component is properly placed in the socket.
