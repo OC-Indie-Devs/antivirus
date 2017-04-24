@@ -7,12 +7,21 @@ public class PlayerController : MonoBehaviour {
 	public bool disabled = false;
 	public float speed = 1.0f;
 	public float rotationSpeed = 1.0f;
+	public float force = 3.0f;
 
 	public Transform minBound;
 	public Transform maxBound;
 	public EnemySpawner enemySpawner;
 
 	GameObject hasComponent;
+
+	Animator anim;
+	bool moving = false;
+
+	void Awake()
+	{
+		anim = GetComponentInChildren<Animator>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -21,6 +30,12 @@ public class PlayerController : MonoBehaviour {
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
 		translation *= Time.deltaTime;
+		if ( translation == 0f )
+		{
+			anim.SetBool("Run", false);
+		} else {
+			anim.SetBool("Run", true);
+		}
 		transform.Translate(0, 0, translation);
 		rotation *= Time.deltaTime;
 		transform.Rotate(0, rotation, 0);
@@ -51,6 +66,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
+
+
 
 	void OnTriggerEnter(Collider other)
 	{

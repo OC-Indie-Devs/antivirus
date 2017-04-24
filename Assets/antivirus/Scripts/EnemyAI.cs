@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour {
 
 	public GameObject[] particleSystems;
 	public GameObject[] lights;
+	public bool dead = false;
 
     private bool hasPath = false;
 
@@ -35,6 +36,9 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if ( dead )
+			return;
+
 		if ( currentTarget == null ) 
 		{
 			currentTarget = tileMgr.GetRandomTile().transform;
@@ -138,4 +142,12 @@ public class EnemyAI : MonoBehaviour {
  
         return false;
     }
+
+	public void Kill()
+	{
+		dead = true;
+		agent.enabled = false;
+		//agent.isStopped = true;
+		anim.enabled = false;
+	}
 }

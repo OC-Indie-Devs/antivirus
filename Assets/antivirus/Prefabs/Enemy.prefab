@@ -1205,6 +1205,7 @@ MonoBehaviour:
   - {fileID: 1911618286394780}
   lights:
   - {fileID: 1402177211536678}
+  dead: 0
 --- !u!137 &137411291457365846
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
