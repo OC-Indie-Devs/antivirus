@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour {
 	NavMeshAgent agent;
 
 	bool damagingTile = false;
+	bool idle = true;
+
 	float travelTime;
 	float travelTimeLimit = 20f;
 
@@ -44,13 +46,34 @@ public class EnemyAI : MonoBehaviour {
 			{
 				if ( !damagingTile )
 				{
-					//Debug.Log("Damaging a tile");
 					damagingTile = true;
-					anim.SetBool("AttackTile", true);
+					if ( currentTarget.gameObject.CompareTag("Component"))
+					{
+						//Debug.Log("Damaging a component");
+						anim.SetBool("AttackComponent", true);
+					} else {
+						//Debug.Log("Damaging a tile");
+						anim.SetBool("AttackTile", true);
+					}
 					StartCoroutine(damageEffects());
 					Invoke("ClearTarget", 3.0f);
 					tileMgr.DamageTile(currentTarget.gameObject);
 				}
+			}
+		}
+
+		if ( !idle )
+		{
+			if ( agent.velocity.magnitude < 0.1 )
+			{
+				anim.SetBool("Crawl", false);
+				idle = true;
+			}
+		} else {
+			if ( agent.velocity.magnitude >= 0.1 )
+			{
+				anim.SetBool("Crawl", true);
+				idle = false;
 			}
 		}
 	}

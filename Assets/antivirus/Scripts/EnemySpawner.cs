@@ -8,15 +8,17 @@ public class EnemySpawner : MonoBehaviour {
 	public Transform spawnPoints;
 	public GameObject[] enemies;
 	public Transform parent;
-
-	public GameObject componentPrefab;
-
-	public Text enemiesDestroyedText;
-	public Text componentSpawnText;
-	public GameObject levelPassedPanel;
-	public GameObject passedParticles;
-
+    
+	[Space]
 	public GameObject[] firewalls;
+	public GameObject[] componentPrefabs;
+	public GameObject[] componentSockets;
+
+	//public Text enemiesDestroyedText;
+	//public Text componentSpawnText;
+    [Space]
+	public LevelManager levelManager;
+
 	int fwIndex = 0;
 
 	List<GameObject> enemyList;
@@ -40,8 +42,16 @@ public class EnemySpawner : MonoBehaviour {
 		for (int i = 0; i < firewalls.Length; i++)
 		{
 			firewalls[i].SetActive(false);
+			componentSockets[i].SetActive(false);
 		}
-		levelPassedPanel.SetActive( false );
+		levelManager.LevelStart();
+	}
+
+	Vector3 GetRandomSpawnPosition()
+	{
+		Transform[] sp = spawnPoints.GetComponentsInChildren<Transform>();
+		int rand_sp = Random.Range(0, sp.Length);
+		return sp[rand_sp].position;
 	}
 
 	public void RemoveEnemy(GameObject enemy)
@@ -53,7 +63,7 @@ public class EnemySpawner : MonoBehaviour {
 			enemiesDestroyed++;
 			if ( enemiesDestroyed == nextComponent )
 			{
-				SpawnComponent(enemy.transform.position);
+				SpawnComponent(GetRandomSpawnPosition());
 				nextComponent = nextComponentSpawn();
 				enemiesDestroyed = 0;
 			}
@@ -66,16 +76,13 @@ public class EnemySpawner : MonoBehaviour {
 			SpawnEnemy();
 		}
 
-		Debug.Log("enemyList.Count = " + enemyList.Count);
+		//Debug.Log("enemyList.Count = " + enemyList.Count);
 		if (enemyList.Count == 0)
 		{
 			// level complete
-			levelPassedPanel.SetActive(true);
-			PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-			pc.disabled = true;
-			passedParticles.SetActive( true );
+			levelManager.LevelPassed();
 		}
-		enemiesDestroyedText.text = "enemiesDestroyed: " + enemiesDestroyed;
+		//enemiesDestroyedText.text = "enemiesDestroyed: " + enemiesDestroyed;
 	}
 
 	public void SpawnEnemy()
@@ -89,21 +96,31 @@ public class EnemySpawner : MonoBehaviour {
 	// when component is properly placed in the socket.
 	void SpawnComponent(Vector3 position)
 	{
-		Debug.Log("Spawning component");
-		GameObject thisComponent = Instantiate(componentPrefab, position, Quaternion.identity);
+		Debug.Log("Spawning component " + (fwIndex + 1));
+		GameObject thisComponent = Instantiate(componentPrefabs[fwIndex], position, Quaternion.identity);
 		CircuitComponent cc = thisComponent.GetComponent<CircuitComponent>();
 		cc.highlightOn();
 		cc.firewall = firewalls[fwIndex];
 		cc.enemySpawner = this;
 		componentExists = true;
-		fwIndex++;
+		componentSockets[fwIndex].SetActive( true );
 	}
 
 	int nextComponentSpawn()
 	{
 		int ncs = Random.Range(3,enemyList.Count);
-		componentSpawnText.text = "componentSpawn: " + ncs;
+		//componentSpawnText.text = "componentSpawn: " + ncs;
 		return ncs;
+	}
+
+	public void ReadyNextComponent()
+	{
+		fwIndex++;
+		if ( componentPrefabs.Length >= fwIndex + 1 )
+		{
+			componentExists = false;
+			Debug.Log("Component " + (fwIndex + 1) + " ready");
+		}
 	}
 
 	public void RaiseFirewall(GameObject firewall)

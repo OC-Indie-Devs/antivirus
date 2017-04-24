@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class TileManager : MonoBehaviour {
 	public float failThreshold = 0.5f;
 	public Slider healthSlider;
-	public GameObject levelFailedPanel;
-
-	public GameObject failParticles;
+	public LevelManager levelManager;
 
 	List<GameObject> healthyTiles;
 	List<GameObject> damagedTiles;
 
 	// Use this for initialization
 	void Start () {
-		levelFailedPanel.SetActive( false );
+		levelManager.LevelStart();
 		healthyTiles = new List<GameObject>();
 		damagedTiles = new List<GameObject>();
 		
@@ -73,14 +71,7 @@ public class TileManager : MonoBehaviour {
 		healthSlider.value = sliderValue;
 		if ( sliderValue < failThreshold )
 		{
-			levelFailedPanel.SetActive( true );
-			PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-			pc.disabled = true;
-			GameObject[] ps = new GameObject[10];
-			for (int i = 0; i < 10; i++)
-			{
-				ps[i] = Instantiate(failParticles, GetAnyRandomTile().transform.position, Quaternion.identity);
-			}
+			levelManager.LevelFailed();
 		}
 		//Debug.Log("sliderValue=" + sliderValue);
 	}

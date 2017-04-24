@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 		//Debug.Log("Player collision with " + other.tag);
 		if ( other.CompareTag("Enemy") )
 		{
-			Debug.Log("Destroying enemy");
+			//Debug.Log("Destroying enemy");
 			enemySpawner.RemoveEnemy(other);
 		} else if ( other.CompareTag("Component"))
 		{
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 		if ( disabled )
 			return;
 		Debug.Log("Player trigger from " + other.tag);
-		if ( other.CompareTag("ComponentSocket") && hasComponent )
+		if ( other.CompareTag("ComponentSocket") && hasComponent != null )
 		{
 			DropComponent(other.gameObject);
 		}
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour {
 		hasComponent.GetComponent<Collider>().enabled = true;
 		hasComponent = null;
 		socket.SetActive(false);
+		enemySpawner.ReadyNextComponent();
 	}
 
 	void checkBounds()
