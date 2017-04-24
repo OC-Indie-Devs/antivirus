@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4604275528331926}
   - component: {fileID: 33296277950598864}
   - component: {fileID: 23945739809788328}
-  - component: {fileID: 95292717433953364}
+  - component: {fileID: 65294950241211802}
+  - component: {fileID: 208253252679858960}
   m_Layer: 0
   m_Name: Spawner_Gate_002
   m_TagString: Untagged
@@ -81,20 +82,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655231965884636}
   m_Mesh: {fileID: 4300000, guid: 643051421b5574f15a0cffc63f8fc797, type: 3}
---- !u!95 &95292717433953364
-Animator:
-  serializedVersion: 3
+--- !u!65 &65294950241211802
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655231965884636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3015033, y: 0.23399933, z: 0.036849976}
+  m_Center: {x: 0, y: 0.1946184, z: 0.8262106}
+--- !u!208 &208253252679858960
+NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655231965884636}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 643051421b5574f15a0cffc63f8fc797, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.651, y: 0.117000006, z: 0.018000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.19500001, z: 0.82600003}
+  m_TimeToStationary: 0.5

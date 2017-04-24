@@ -14,11 +14,13 @@ public class SceneMgr : MonoBehaviour {
 	public void NextScene()
 	{
 		int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-		if ( nextIndex > SceneManager.sceneCountInBuildSettings )
+		Debug.Log("nextIndex=" + nextIndex);
+		if ( nextIndex >= SceneManager.sceneCountInBuildSettings )
 		{
 			// just reload same scene if at last scene
-			nextIndex--;
+			nextIndex = 0;
 		}
+		Debug.Log("nextIndex=" + nextIndex);
 		SceneManager.LoadScene( nextIndex );
 	}
 	
