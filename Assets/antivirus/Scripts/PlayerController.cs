@@ -32,9 +32,17 @@ public class PlayerController : MonoBehaviour {
 		translation *= Time.deltaTime;
 		if ( translation == 0f )
 		{
-			anim.SetBool("Run", false);
+			if ( moving )
+			{
+				anim.SetBool("Run", false);
+				moving = false;
+			}
 		} else {
-			anim.SetBool("Run", true);
+			if ( !moving )
+			{
+				anim.SetBool("Run", true);
+				moving = true;
+			}
 		}
 		transform.Translate(0, 0, translation);
 		rotation *= Time.deltaTime;
@@ -66,7 +74,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
-
 
 
 	void OnTriggerEnter(Collider other)

@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour {
 		levelFailedPanel.SetActive( true );
 		PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 		pc.disabled = true;
-		GameObject[] ps = new GameObject[10];
 		for (int i = 0; i < 10; i++)
 		{
 			StartCoroutine(playFailedEffect(failParticles));
