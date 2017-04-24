@@ -12,6 +12,13 @@ public class LevelManager : MonoBehaviour {
 	public TileManager tileManager;
 	public EnemySpawner enemySpawner;
 
+	AudioSource aSource;
+
+	void Awake()
+	{
+		aSource = GetComponent<AudioSource>();
+	}
+
 	public void LevelFailed()
 	{
 		levelFailedPanel.SetActive( true );
@@ -20,7 +27,8 @@ public class LevelManager : MonoBehaviour {
 		for (int i = 0; i < 10; i++)
 		{
 			StartCoroutine(playFailedEffect(failParticles));
-		}		
+		}
+		aSource.Stop();
 	}
 
 	IEnumerator playFailedEffect(GameObject prefab)
@@ -37,11 +45,13 @@ public class LevelManager : MonoBehaviour {
 		PlayerController pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 		pc.disabled = true;
 		passParticles.SetActive( true );
+		aSource.Stop();
 	}
 
 	public void LevelStart()
 	{
 		levelPassedPanel.SetActive( false );
 		levelFailedPanel.SetActive( false );
+		aSource.Play();
 	}
 }

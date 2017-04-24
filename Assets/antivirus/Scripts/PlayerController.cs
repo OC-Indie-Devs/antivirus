@@ -13,14 +13,21 @@ public class PlayerController : MonoBehaviour {
 	public Transform maxBound;
 	public EnemySpawner enemySpawner;
 
+	public AudioClip destroyClip;
+	public AudioClip pickupClip;
+	public AudioClip placeClip;
+
 	GameObject hasComponent;
 
 	Animator anim;
+	AudioSource aSource;
+
 	bool moving = false;
 
 	void Awake()
 	{
 		anim = GetComponentInChildren<Animator>();
+		aSource = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -59,6 +66,8 @@ public class PlayerController : MonoBehaviour {
 		if ( other.CompareTag("Enemy") )
 		{
 			//Debug.Log("Destroying enemy");
+			aSource.clip = destroyClip;
+			aSource.Play();
 			enemySpawner.RemoveEnemy(other);
 		} else if ( other.CompareTag("Component"))
 		{
@@ -71,6 +80,8 @@ public class PlayerController : MonoBehaviour {
 				other.transform.localRotation = Quaternion.identity;
 				other.transform.position = transform.position + transform.forward;
 				hasComponent = other;
+				aSource.clip = pickupClip;
+				aSource.Play();
 			}
 		}
 	}
@@ -101,6 +112,8 @@ public class PlayerController : MonoBehaviour {
 		hasComponent = null;
 		socket.SetActive(false);
 		enemySpawner.ReadyNextComponent();
+		aSource.clip = placeClip;
+		aSource.Play();
 	}
 
 	void checkBounds()

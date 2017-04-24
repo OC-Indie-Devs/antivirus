@@ -25,12 +25,14 @@ public class EnemyAI : MonoBehaviour {
 	float travelTimeLimit = 20f;
 
 	Animator anim;
+	AudioSource aSource;
 
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 		tileMgr = GameObject.FindWithTag("Tiles").GetComponent<TileManager>();
 		anim = GetComponentInChildren<Animator>();
+		aSource = GetComponent<AudioSource>();
 		anim.SetBool("Crawl", true);
 	}
 	
@@ -94,8 +96,10 @@ public class EnemyAI : MonoBehaviour {
 			for (int j = 0; j < particleSystems.Length; j++)
 			{
 				ps[j].Play();
-				blinkLights();
 			}
+			blinkLights();
+			aSource.pitch = Random.Range(0.5f, 1.5f);
+			aSource.Play();
 			yield return new WaitForSeconds(0.5f);
 		}
 	}
