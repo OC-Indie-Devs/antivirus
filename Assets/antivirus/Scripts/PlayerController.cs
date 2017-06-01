@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour {
 				hasComponent = other;
 				aSource.clip = pickupClip;
 				aSource.Play();
+                enemySpawner.ShowSocket();
 			}
 		}
 	}

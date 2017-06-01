@@ -57,6 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 99ad0076e7bbb4807afe2d6a1a38e041, type: 2}
+  - {fileID: 2100000, guid: 019466160e4e2f7409f1e582431bf409, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,4 +109,4 @@ MonoBehaviour:
   isInSocket: 0
   firewall: {fileID: 0}
   enemySpawner: {fileID: 0}
-  highlightColor: {r: 1, g: 0, b: 0.49803922, a: 1}
+  highlightColor: {r: 0, g: 1, b: 1, a: 1}

@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	public Transform spawnPoints;
 	public GameObject[] enemies;
-	public ParticleSystem spawnParticles;
+	public GameObject spawnParticles;
 	public GameObject destroyParticles;
 	public Transform parent;
     
@@ -29,10 +29,17 @@ public class EnemySpawner : MonoBehaviour {
 	int enemiesDestroyed = 0;
 
 	bool componentExists = false;
-
 	int nextComponent;
 
-	void Start () {
+    bool portalOpen = false;
+    float openPortalTime = 0f;
+
+    private void Awake()
+    {
+        spawnParticles.SetActive(false);
+    }
+
+    void Start () {
 		enemyList = new List<GameObject>();
 		int numEnemies = enemies.Length;
 
@@ -57,7 +64,24 @@ public class EnemySpawner : MonoBehaviour {
 		levelManager.LevelStart();
 	}
 
-	Vector3 GetRandomSpawnPosition()
+    private void Update()
+    {
+        if ( portalOpen )
+        {
+            if ( !spawnParticles.activeSelf)
+                spawnParticles.SetActive(true);
+            if (openPortalTime > 0f)
+                openPortalTime -= Time.deltaTime;
+            else
+            {
+                spawnParticles.SetActive(false);
+                portalOpen = false;
+            }
+        }
+    }
+
+
+    Vector3 GetRandomSpawnPosition()
 	{
 		Transform[] sp = spawnPoints.GetComponentsInChildren<Transform>();
 		int rand_sp = Random.Range(0, sp.Length);
@@ -106,18 +130,17 @@ public class EnemySpawner : MonoBehaviour {
 
 	public void SpawnEnemy()
 	{
-		StartCoroutine( spawnSwirl() );
+        openPortal();
 		int numEnemies = enemies.Length;
 		GameObject thisEnemy = Instantiate(enemies[Random.Range(0,numEnemies)], transform.position, Quaternion.identity, parent);
 		enemyList.Add(thisEnemy);
 	}
 
-	IEnumerator spawnSwirl()
-	{
-		spawnParticles.Play();
-		yield return new WaitForSeconds( 1.0f );
-		spawnParticles.Stop();
-	}
+    void openPortal()
+    {
+        openPortalTime = 1.0f;
+        portalOpen = true;
+    }
 
 
 	// spawn the component needed to repair the circuit and set the firewall that will go up
@@ -131,7 +154,6 @@ public class EnemySpawner : MonoBehaviour {
 		cc.firewall = firewalls[fwIndex];
 		cc.enemySpawner = this;
 		componentExists = true;
-		componentSockets[fwIndex].SetActive( true );
 	}
 
 	int nextComponentSpawn()
@@ -151,7 +173,12 @@ public class EnemySpawner : MonoBehaviour {
 		}
 	}
 
-	public void RaiseFirewall(GameObject firewall)
+    public void ShowSocket()
+    {
+        componentSockets[fwIndex].SetActive(true);
+    }
+
+    public void RaiseFirewall(GameObject firewall)
 	{
 		firewall.SetActive(true);
 

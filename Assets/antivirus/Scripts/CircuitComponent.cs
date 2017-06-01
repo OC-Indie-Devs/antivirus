@@ -14,13 +14,14 @@ public class CircuitComponent : MonoBehaviour {
 	Color originalColor;
 	Renderer rend;
 
-	void Awake()
+	void Start()
 	{
 		rend = GetComponent<Renderer>();
-		originalColor = rend.material.color;
-	}
+        //originalColor = rend.material.color;
+        originalColor = rend.materials[1].color;
+    }
 
-	public void enableCircuit()
+    public void enableCircuit()
 	{
 		enemySpawner.RaiseFirewall(firewall);
 	}
@@ -33,13 +34,13 @@ public class CircuitComponent : MonoBehaviour {
 	public void highlightOff()
 	{
 		highlight = false;
-		rend.material.color = originalColor;
+		rend.materials[1].color = originalColor;
 	}
 
 	void Update() {
 		if ( highlight )
 		{
-	        rend.material.color = Color.Lerp(originalColor, highlightColor, Mathf.PingPong(Time.time, 1));
+            rend.materials[1].SetColor("_Color", Color.Lerp(originalColor, highlightColor, Mathf.PingPong(Time.time, 1)));
 		}
     }
 }
